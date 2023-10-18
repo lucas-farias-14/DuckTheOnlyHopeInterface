@@ -4,6 +4,10 @@ import { Controller, useForm } from 'react-hook-form'
 import schemas from '../schema'
 import MaskedInput from 'react-text-mask'
 import NumberFormat from 'react-number-format'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 import useStyles from './styles'
 
 const RegisterForm = () => {
@@ -52,8 +56,8 @@ const RegisterForm = () => {
         render={({ field }) => (
           <TextField
             {...field}
-            label="Data de nascimento"
-            type="nome"
+            label="Idade"
+            type="idade"
             margin="normal"
             variant="outlined"
             fullWidth
@@ -61,25 +65,17 @@ const RegisterForm = () => {
           />
         )}
         control={control}
-        name="nome"
+        name="idade"
         mode="onBlur"
       />
-      <Controller
-        render={({ field }) => (
-          <TextField
-            {...field}
-            label="Sexo"
-            type="nome"
-            margin="normal"
-            variant="outlined"
-            fullWidth
-            className={classes.inputs}
-          />
-        )}
-        control={control}
-        name="nome"
-        mode="onBlur"
-      />
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-label">Sexo</InputLabel>
+        <Select labelId="demo-simple-select-label" id="demo-simple-select" value={age} onChange={handleChange}>
+          <MenuItem value={1}>Masculino</MenuItem>
+          <MenuItem value={2}>Feminino</MenuItem>
+          <MenuItem value={3}>Outros</MenuItem>
+        </Select>
+      </FormControl>
       <Controller
         render={({ field }) => (
           <TextField
