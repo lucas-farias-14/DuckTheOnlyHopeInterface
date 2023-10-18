@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import RegisterForm from 'views/Register/RegisterForm'
 import useStyles from './styles'
+import EnhancedTable from 'views/List/List'
 function TabPanel(props) {
   const { children, value, index, ...other } = props
 
@@ -66,7 +67,9 @@ export default function SimpleTabs() {
           </Box>
         </Container>
       </TabPanel>
-      <TabPanel value={value} index={1}></TabPanel>
+      <TabPanel value={value} index={1}>
+        <EnhancedTable />
+      </TabPanel>
       <TabPanel value={value} index={2}></TabPanel>
     </div>
   )
