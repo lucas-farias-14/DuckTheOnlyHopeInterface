@@ -1,155 +1,243 @@
 import React, { useState } from 'react'
 import { Box, Button, TextField } from '@material-ui/core'
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import schemas from '../schema'
-import MaskedInput from 'react-text-mask'
-import NumberFormat from 'react-number-format'
+import Dialog from '@material-ui/core/Dialog'
+import { addHost } from 'requests'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import useStyles from './styles'
+import { withStyles } from '@material-ui/core/styles'
+import MuiDialogTitle from '@material-ui/core/DialogTitle'
+import MuiDialogContent from '@material-ui/core/DialogContent'
+import MuiDialogActions from '@material-ui/core/DialogActions'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
 
 const RegisterForm = () => {
-  const [loading, setLoading] = useState(false)
-  const [age, setAge] = React.useState('')
-  const handleChange = (event) => {
-    setAge(event.target.value)
+  const DEFAULT_VALUES = {
+    age: '',
+    sex: 'MALE',
+    weight: '',
+    height: '',
+    bloodType: 'A_POSITIVE',
+    musicalGenre: 'POP',
+    sport: 'FUTEBOL',
+    game: 'COUNTER_STRIKE',
   }
-  const classes = useStyles()
-  const {
-    handleSubmit,
-    formState: { errors },
-    control,
-  } = useForm({
-    validationSchema: schemas.schemaLogin,
-    defaultValues: {
-      email: '',
-      password: '',
+
+  const [request, setRequest] = useState(DEFAULT_VALUES)
+  const [response, setResponse] = useState({})
+
+  const styles = (theme) => ({
+    root: {
+      margin: 0,
+      padding: theme.spacing(2),
+    },
+    closeButton: {
+      position: 'absolute',
+      right: theme.spacing(1),
+      top: theme.spacing(1),
+      color: theme.palette.grey[500],
     },
   })
 
-  const onSubmit = async (data) => {
-    try {
-      setLoading(true)
-      // const response = await service.fightforge.teste({  })
+  const DialogContent = withStyles((theme) => ({
+    root: {
+      padding: theme.spacing(2),
+    },
+  }))(MuiDialogContent)
 
-      // const accessToken = response.data.accessToken
+  const DialogActions = withStyles((theme) => ({
+    root: {
+      margin: 0,
+      padding: theme.spacing(1),
+    },
+  }))(MuiDialogActions)
+
+  const DialogTitle = withStyles(styles)((props) => {
+    const { children, classes, onClose, ...other } = props
+    return (
+      <MuiDialogTitle disableTypography className={classes.root} {...other}>
+        <Typography variant="h6">{children}</Typography>
+        {onClose ? (
+          <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </MuiDialogTitle>
+    )
+  })
+
+  const [open, setOpen] = useState(false)
+
+  const classes = useStyles()
+
+  const onSubmit = async () => {
+    try {
+      if (request.age == '' || request.weight == '' || request.height == '') {
+        alert('Preencha todos os campos!')
+      } else {
+        addHost(request).then((resp) => {
+          setResponse({
+            strength: resp.strength,
+            speed: resp.speed,
+            intelligence: resp.intelligence,
+          })
+        })
+        setOpen(true)
+      }
     } catch (error) {
-      console.log('erro')
-    } finally {
-      setLoading(false)
+      console.log(error)
     }
   }
 
-  const defineErrorMessage = (error) => {
-    const response = error?.response
-    const status = response?.status
-    const errorMessage = response.data?.error?.message
-    if ((status === 401 || status === 422) && errorMessage) return errorMessage
-    return 'Ocorreu algum erro! Tente novamente!'
+  const onClose = async () => {
+    setOpen(false)
+    setRequest(DEFAULT_VALUES)
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        render={({ field }) => (
-          <TextField
-            {...field}
-            label="Idade"
-            type="idade"
-            margin="normal"
-            variant="outlined"
-            fullWidth
-            className={classes.inputs}
-          />
-        )}
-        control={control}
-        name="idade"
-        mode="onBlur"
+    <form>
+      <TextField
+        label="Idade"
+        variant="outlined"
+        value={request.age}
+        onChange={(event) => setRequest({ ...request, age: event.target.value })}
       />
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Sexo</InputLabel>
-        <Select labelId="demo-simple-select-label" id="demo-simple-select" value={age} onChange={handleChange}>
-          <MenuItem value={1}>Masculino</MenuItem>
-          <MenuItem value={2}>Feminino</MenuItem>
-          <MenuItem value={3}>Outros</MenuItem>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="sexoLabel">Sexo</InputLabel>
+        <Select
+          labelId="sexoLabel"
+          value={request.sex}
+          onChange={(event) => setRequest({ ...request, sex: event.target.value })}
+          label="Sexo"
+        >
+          <MenuItem value={'MALE'}>Masculino</MenuItem>
+          <MenuItem value={'FEMALE'}>Feminino</MenuItem>
+          <MenuItem value={'UNKNOWN'}>Não informar</MenuItem>
         </Select>
       </FormControl>
-      <Controller
-        render={({ field }) => (
-          <TextField
-            {...field}
-            label="Email"
-            type="email"
-            variant="outlined"
-            margin="normal"
-            error={!!errors.email}
-            helperText={errors?.email?.message}
-            fullWidth
-            className={classes.inputs}
-          />
-        )}
-        control={control}
-        name="email"
-        mode="onBlur"
+      <TextField
+        label="Peso"
+        variant="outlined"
+        value={request.weight}
+        onChange={(event) => setRequest({ ...request, weight: event.target.value })}
       />
-      <Controller
-        render={({ field }) => (
-          <TextField
-            {...field}
-            label="Senha"
-            type="password"
-            variant="outlined"
-            margin="normal"
-            error={!!errors.password}
-            fullWidth
-            className={classes.inputs}
-          />
-        )}
-        control={control}
-        name="password"
-        mode="onBlur"
+      <TextField
+        label="Altura"
+        variant="outlined"
+        value={request.height}
+        onChange={(event) => setRequest({ ...request, height: event.target.value })}
       />
-      <Controller
-        render={({ field }) => (
-          <TextField
-            {...field}
-            label="Confirmar senha"
-            type="password"
-            variant="outlined"
-            margin="normal"
-            error={!!errors.password}
-            helperText={errors?.password?.message}
-            fullWidth
-            className={classes.inputs}
-          />
-        )}
-        control={control}
-        name="confirmed-password"
-        mode="onBlur"
-      />
-      <Controller
-        render={({ field }) => (
-          <TextField
-            {...field}
-            label="Código da empresa"
-            type="nome"
-            margin="normal"
-            variant="outlined"
-            fullWidth
-            className={classes.inputs}
-          />
-        )}
-        control={control}
-        name="nome"
-        mode="onBlur"
-      />
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="tipoSanguineoLabel">Tipo Sanguíneo</InputLabel>
+        <Select
+          labelId="tipoSanguineoLabel"
+          value={request.bloodType}
+          onChange={(event) => setRequest({ ...request, bloodType: event.target.value })}
+          label="Tipo Sanguíneo"
+        >
+          <MenuItem value={'A_POSITIVE'}>A+</MenuItem>
+          <MenuItem value={'A_NEGATIVE'}>A-</MenuItem>
+          <MenuItem value={'B_POSITIVE'}>B+</MenuItem>
+          <MenuItem value={'B_NEGATIVE'}>B-</MenuItem>
+          <MenuItem value={'O_POSITIVE'}>O+</MenuItem>
+          <MenuItem value={'O_NEGATIVE'}>O-</MenuItem>
+          <MenuItem value={'AB_POSITIVE'}>AB+</MenuItem>
+          <MenuItem value={'AB_NEGATIVE'}>AB-</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="generoMusicalLabel">Gênero Musical</InputLabel>
+        <Select
+          labelId="generoMusicalLabel"
+          value={request.musicalGenre}
+          onChange={(event) => setRequest({ ...request, musicalGenre: event.target.value })}
+          label="Gênero Musical"
+        >
+          <MenuItem value={'POP'}>Pop</MenuItem>
+          <MenuItem value={'ROCK'}>Rock</MenuItem>
+          <MenuItem value={'PAGODE'}>Pagode</MenuItem>
+          <MenuItem value={'SERTANEJO'}>Sertanejo</MenuItem>
+          <MenuItem value={'HIP_HOP_RAP'}>Hip-Hop/Rap</MenuItem>
+          <MenuItem value={'ELETRONICA'}>Eletrônica</MenuItem>
+          <MenuItem value={'FUNK'}>Funk</MenuItem>
+          <MenuItem value={'METAL'}>Metal</MenuItem>
+          <MenuItem value={'ESQUIZITICE'}>Demais gêneros estranhos</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="esporteLabel">Esporte</InputLabel>
+        <Select
+          labelId="esporteLabel"
+          value={request.sport}
+          onChange={(event) => setRequest({ ...request, sport: event.target.value })}
+          label="Esporte"
+        >
+          <MenuItem value={'FUTEBOL'}>Futebol</MenuItem>
+          <MenuItem value={'BASQUETE'}>Basquete</MenuItem>
+          <MenuItem value={'VOLEI'}>Vôlei</MenuItem>
+          <MenuItem value={'LUTA'}>Luta</MenuItem>
+          <MenuItem value={'ATLETISMO'}>Atletismo</MenuItem>
+          <MenuItem value={'ESPORTS'}>eSports</MenuItem>
+          <MenuItem value={'NADA'}>Nada</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="gameLabel">Game</InputLabel>
+        <Select
+          labelId="gameLabel"
+          value={request.game}
+          onChange={(event) => setRequest({ ...request, game: event.target.value })}
+          label="Game"
+        >
+          <MenuItem value={'COUNTER_STRIKE'}>Counter Strike</MenuItem>
+          <MenuItem value={'MINECRAFT'}>Minecraft</MenuItem>
+          <MenuItem value={'FORTNITE'}>Fortnite</MenuItem>
+          <MenuItem value={'THE_WITCHER'}>The Witcher</MenuItem>
+          <MenuItem value={'VALORANT'}>Valorant</MenuItem>
+          <MenuItem value={'ASSASSINS_CREED'}>Assassin's Creed</MenuItem>
+          <MenuItem value={'WORLD_OF_WARCRAFT'}>World of Warcraft</MenuItem>
+          <MenuItem value={'FIFA'}>FIFA</MenuItem>
+          <MenuItem value={'LEAGUE_OF_LEGENDS'}>League of Legends</MenuItem>
+          <MenuItem value={'DOTA'}>Dota</MenuItem>
+          <MenuItem value={'ROCKET_LEAGUE'}>Rocket League</MenuItem>
+          <MenuItem value={'OUTRO'}>Outro - pouco relevante</MenuItem>
+        </Select>
+      </FormControl>
       <Box mt={2} className={classes.actionBox}>
-        <Button type="submit" variant="contained" className={classes.buttonPrimary}>
-          Cadastre-se
+        <Button variant="contained" onClick={onSubmit}>
+          Cadastrar hospedeiro
         </Button>
       </Box>
+      <Dialog onClose={onClose} aria-labelledby="customized-dialog-title" open={open}>
+        <DialogTitle id="customized-dialog-title" onClose={onClose}>
+          <center>
+            <strong>Hospedeiro cadastrado!</strong>
+          </center>
+        </DialogTitle>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+            <center>
+              <p>Se algum dia, caso queira o destino, essa pessoa se tornar um zumbi, esses serão seus atributos:</p>
+              <strong>Força: {response.strength}</strong>
+              <br />
+              <strong>Velocidade: {response.speed}</strong>
+              <br />
+              <strong>Inteligência: {response.intelligence}</strong>
+            </center>
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={onClose} variant="contained">
+            Obrigado! (eu acho...)
+          </Button>
+        </DialogActions>
+      </Dialog>
     </form>
   )
 }
