@@ -24,7 +24,7 @@ export default function DuckHelp() {
     <div>
       <Button
         variant="contained"
-        style={{ backgroundColor: 'yellow' }}
+        style={{ backgroundColor: '#fb8301' }}
         size="large"
         className={classes.button}
         startIcon={<WarningIcon />}
@@ -34,19 +34,23 @@ export default function DuckHelp() {
         Ajuda o Pato!!
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-        <DialogContent>
+        <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#fcf000', color: 'black' }}>
+          Identificador de Zumbis
+        </DialogTitle>
+        <DialogContent style={{ backgroundColor: '#fefaad' }}>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates occasionally.
+            Para que o chip consiga passar as informações corretas para o pato, precisamos primeiro identificar o zumbi!
+            Graças aos deuses da identificação, existe um id catalogado para "todos" (todos os que cadastramos) os
+            zumbis que existem, insira um dos ids para que a super API prepare uma estratégia!
           </DialogContentText>
-          <TextField autoFocus margin="dense" id="name" label="Email Address" type="email" fullWidth />
+          <TextField autoFocus margin="dense" id="id" label="ID do ZUMBI" type="text" fullWidth />
         </DialogContent>
-        <DialogActions>
+        <DialogActions style={{ backgroundColor: '#fefaad' }}>
           <Button onClick={handleClose} color="primary">
-            Cancel
+            Fugir (Corre Berg!)
           </Button>
           <Button onClick={handleClose} color="primary">
-            Subscribe
+            Enviar
           </Button>
         </DialogActions>
       </Dialog>
