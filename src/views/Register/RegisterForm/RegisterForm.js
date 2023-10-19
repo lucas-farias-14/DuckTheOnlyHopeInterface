@@ -43,6 +43,24 @@ const RegisterForm = () => {
     },
   })
 
+  const onlyIntHandle = (field, value) => {
+    if (!isNaN(value)) {
+      setRequest({ ...request, [field]: parseInt(value) })
+    }
+    if (!value) {
+      setRequest({ ...request, [field]: value })
+    }
+  }
+
+  const onlyFloatHandle = (field, value) => {
+    if (!isNaN(value)) {
+      setRequest({ ...request, [field]: parseFloat(value) })
+    }
+    if (!value) {
+      setRequest({ ...request, [field]: value })
+    }
+  }
+
   const DialogContent = withStyles((theme) => ({
     root: {
       padding: theme.spacing(2),
@@ -105,7 +123,7 @@ const RegisterForm = () => {
         label="Idade"
         variant="outlined"
         value={request.age}
-        onChange={(event) => setRequest({ ...request, age: event.target.value })}
+        onChange={(event) => onlyIntHandle('age', event.target.value)}
         style={{ width: '100px' }}
       />
       <FormControl variant="outlined" className={classes.inputs} style={{ width: '200px' }}>
