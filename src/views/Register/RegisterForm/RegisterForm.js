@@ -101,15 +101,15 @@ const RegisterForm = () => {
   return (
     <form className={classes.styledForm}>
       <TextField
+        className={classes.inputs}
         label="Idade"
         variant="outlined"
         value={request.age}
         onChange={(event) => setRequest({ ...request, age: event.target.value })}
       />
-      <FormControl variant="outlined" className={classes.formControl}>
+      <FormControl variant="outlined" className={classes.inputs}>
         <InputLabel id="sexoLabel">Sexo</InputLabel>
         <Select
-          style={{ borderColor: 'white' }}
           labelId="sexoLabel"
           value={request.sex}
           onChange={(event) => setRequest({ ...request, sex: event.target.value })}
@@ -123,16 +123,18 @@ const RegisterForm = () => {
       <TextField
         label="Peso"
         variant="outlined"
+        className={classes.inputs}
         value={request.weight}
         onChange={(event) => setRequest({ ...request, weight: event.target.value })}
       />
       <TextField
         label="Altura"
+        className={classes.inputs}
         variant="outlined"
         value={request.height}
         onChange={(event) => setRequest({ ...request, height: event.target.value })}
       />
-      <FormControl variant="outlined" className={classes.formControl}>
+      <FormControl variant="outlined" className={classes.inputs}>
         <InputLabel id="tipoSanguineoLabel">Tipo Sanguíneo</InputLabel>
         <Select
           labelId="tipoSanguineoLabel"
@@ -150,7 +152,7 @@ const RegisterForm = () => {
           <MenuItem value={'AB_NEGATIVE'}>AB-</MenuItem>
         </Select>
       </FormControl>
-      <FormControl variant="outlined" className={classes.formControl}>
+      <FormControl variant="outlined" className={classes.inputs}>
         <InputLabel id="generoMusicalLabel">Gênero Musical</InputLabel>
         <Select
           labelId="generoMusicalLabel"
@@ -169,7 +171,7 @@ const RegisterForm = () => {
           <MenuItem value={'ESQUIZITICE'}>Demais gêneros estranhos</MenuItem>
         </Select>
       </FormControl>
-      <FormControl variant="outlined" className={classes.formControl}>
+      <FormControl variant="outlined" className={classes.inputs}>
         <InputLabel id="esporteLabel">Esporte</InputLabel>
         <Select
           labelId="esporteLabel"
@@ -186,7 +188,7 @@ const RegisterForm = () => {
           <MenuItem value={'NADA'}>Nada</MenuItem>
         </Select>
       </FormControl>
-      <FormControl variant="outlined" className={classes.formControl}>
+      <FormControl variant="outlined" className={classes.inputs}>
         <InputLabel id="gameLabel">Game</InputLabel>
         <Select
           labelId="gameLabel"
