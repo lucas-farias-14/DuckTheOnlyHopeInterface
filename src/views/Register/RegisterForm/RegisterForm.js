@@ -219,8 +219,8 @@ const RegisterForm = () => {
         </Button>
       </Box>
       <Dialog onClose={onClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={onClose} style={{ backgroundColor: '#fdfa79' }}>
-          <center style={{ color: 'black' }}>
+        <DialogTitle id="customized-dialog-title" onClose={onClose} style={{ backgroundColor: '#330d00' }}>
+          <center style={{ color: '#fcf000' }}>
             <h3>
               <strong>Hospedeiro cadastrado!</strong>
             </h3>
