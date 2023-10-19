@@ -47,7 +47,7 @@ export default function Home() {
         <DialogActions
           style={{ backgroundColor: '#231F20', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
         >
-          <Button onClick={handleClose} style={{ color: 'yellow' }}>
+          <Button onClick={handleClose} style={{ color: 'yellow' }} className={classes.ButtonHover}>
             Vamos lá!
           </Button>
         </DialogActions>

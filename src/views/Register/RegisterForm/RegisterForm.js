@@ -214,7 +214,7 @@ const RegisterForm = () => {
         </Select>
       </FormControl>
       <Box mt={2} className={classes.actionBox}>
-        <Button variant="outlined" onClick={onSubmit} style={{ backgroundColor: '#fb8301' }}>
+        <Button variant="outlined" onClick={onSubmit} className={classes.ButtonHover}>
           Cadastrar hospedeiro
         </Button>
       </Box>
@@ -249,7 +249,7 @@ const RegisterForm = () => {
             padding: '15px',
           }}
         >
-          <Button autoFocus onClick={onClose} variant="outlined" style={{ backgroundColor: '#fb8301', color: 'black' }}>
+          <Button autoFocus onClick={onClose} variant="outlined" className={classes.ButtonHover}>
             Obrigado! (eu acho...)
           </Button>
         </DialogActions>

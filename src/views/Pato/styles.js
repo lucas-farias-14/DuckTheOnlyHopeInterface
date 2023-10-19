@@ -25,5 +25,11 @@ const styles = makeStyles((theme) => ({
     fontWeight: 'bold',
   },
   logo: {},
+  ButtonHover: {
+    backgroundColor: '#fb8301',
+    '&:hover': {
+      backgroundColor: '#faa748',
+    },
+  },
 }))
 export default styles

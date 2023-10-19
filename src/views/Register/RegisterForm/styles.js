@@ -24,6 +24,12 @@ const styles = makeStyles((theme) => ({
   formStyle: {
     backgroundColor: 'white',
   },
+  ButtonHover: {
+    backgroundColor: '#fb8301',
+    '&:hover': {
+      backgroundColor: '#faa748',
+    },
+  },
   buttonPrimary: {
     widht: '100%',
     backgroundColor: '#808080',

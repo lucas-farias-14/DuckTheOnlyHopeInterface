@@ -23,10 +23,9 @@ export default function DuckHelp() {
   return (
     <div>
       <Button
-        variant="contained"
-        style={{ backgroundColor: '#fb8301' }}
+        variant="hover"
         size="large"
-        className={classes.button}
+        className={classes.ButtonHover}
         startIcon={<WarningIcon />}
         endIcon={<WarningIcon />}
         onClick={handleClickOpen}
@@ -46,10 +45,10 @@ export default function DuckHelp() {
           <TextField autoFocus margin="dense" id="id" label="ID do ZUMBI" type="text" fullWidth />
         </DialogContent>
         <DialogActions style={{ backgroundColor: '#fefaad' }}>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} style={{ color: 'black' }}>
             Fugir (Corre Berg!)
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} style={{ color: 'black' }}>
             Enviar
           </Button>
         </DialogActions>
