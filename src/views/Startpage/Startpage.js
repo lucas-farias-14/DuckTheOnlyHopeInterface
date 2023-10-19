@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import { Container } from '@material-ui/core'
@@ -8,6 +7,7 @@ import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import RegisterForm from 'views/Register/RegisterForm'
+import Pato from 'views/Pato/Pato'
 import useStyles from './styles'
 import EnhancedTable from 'views/List/List'
 function TabPanel(props) {
@@ -54,9 +54,9 @@ export default function SimpleTabs() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Cadastrar Zumbis" {...a11yProps(0)} />
-          <Tab label="Listar Zumbis" {...a11yProps(1)} />
+        <Tabs value={value} onChange={handleChange}>
+          <Tab label="Cadastrar Hospedeiro" {...a11yProps(0)} />
+          <Tab label="Listar Hospedeiros" {...a11yProps(1)} />
           <Tab label="Pato" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -70,7 +70,9 @@ export default function SimpleTabs() {
       <TabPanel value={value} index={1}>
         <EnhancedTable />
       </TabPanel>
-      <TabPanel value={value} index={2}></TabPanel>
+      <TabPanel value={value} index={2}>
+        <Pato />
+      </TabPanel>
     </div>
   )
 }

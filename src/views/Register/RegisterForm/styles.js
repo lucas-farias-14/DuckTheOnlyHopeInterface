@@ -1,6 +1,12 @@
 import { makeStyles } from '@material-ui/core'
 
 const styles = makeStyles((theme) => ({
+  styledForm: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
   selectControl: {
     borderColor: '#3C4B8F',
   },
@@ -61,15 +67,6 @@ const styles = makeStyles((theme) => ({
         borderColor: 'white', // Cor da borda quando o campo está focado
       },
     },
-    // '& .MuiInput-underline:before': {
-    //   borderBottomColor: 'red', // Cor da linha do input antes de ser focado
-    // },
-    // '& .MuiInput-underline:after': {
-    //   borderBottomColor: 'purple', // Cor da linha do input após ser focado
-    // },
-    // '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-    //   borderBottomColor: 'pink', // Cor da linha do input ao passar o mouse
-    // },
   },
 }))
 export default styles

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core'
 
-const styles = makeStyles(() => ({
+const styles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,

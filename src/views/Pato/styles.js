@@ -1,6 +1,13 @@
 import { makeStyles } from '@material-ui/core'
 
-const styles = makeStyles(() => ({
+const styles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -9,8 +16,7 @@ const styles = makeStyles(() => ({
     minHeight: '100%',
     flexDirection: 'column',
     paddingBottom: 80,
-    paddingTop: 10,
-    marginTop: 150,
+    marginTop: 0,
     textAlign: 'center',
   },
   welcomeText: {

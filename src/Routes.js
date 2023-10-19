@@ -6,9 +6,6 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" element={<StartPage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/teacher" element={<Teacher />} />
-        <Route path="/startpage" element={<StartPage />} />
       </Switch>
     </BrowserRouter>
   )
