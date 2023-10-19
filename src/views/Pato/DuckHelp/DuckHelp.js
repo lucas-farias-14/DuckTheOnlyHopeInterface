@@ -23,10 +23,9 @@ export default function DuckHelp() {
   return (
     <div>
       <Button
-        variant="contained"
-        style={{ backgroundColor: '#fb8301' }}
+        variant="hover"
         size="large"
-        className={classes.button}
+        className={classes.ButtonHover}
         startIcon={<WarningIcon />}
         endIcon={<WarningIcon />}
         onClick={handleClickOpen}
@@ -34,22 +33,24 @@ export default function DuckHelp() {
         Ajuda o Pato!!
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#fcf000', color: 'black' }}>
+        <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#330d00', color: '#fcf000' }}>
           Identificador de Zumbis
         </DialogTitle>
         <DialogContent style={{ backgroundColor: '#fefaad' }}>
           <DialogContentText>
-            Para que o chip consiga passar as informações corretas para o pato, precisamos primeiro identificar o zumbi!
-            Graças aos deuses da identificação, existe um id catalogado para "todos" (todos os que cadastramos) os
-            zumbis que existem, insira um dos ids para que a super API prepare uma estratégia!
+            <div style={{ fontWeight: 'bold' }}>
+              Para que o chip consiga passar as informações corretas para o pato, precisamos primeiro identificar o
+              zumbi! Graças aos deuses da identificação, existe um id catalogado para "todos" (todos os que cadastramos)
+              os zumbis que existem, insira um dos ids para que a super API prepare uma estratégia!
+            </div>
           </DialogContentText>
           <TextField autoFocus margin="dense" id="id" label="ID do ZUMBI" type="text" fullWidth />
         </DialogContent>
         <DialogActions style={{ backgroundColor: '#fefaad' }}>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} style={{ color: 'black' }}>
             Fugir (Corre Berg!)
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} style={{ color: 'black' }}>
             Enviar
           </Button>
         </DialogActions>
