@@ -4,7 +4,7 @@ const styles = makeStyles((theme) => ({
   styledForm: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '317px',
     },
   },
   selectControl: {

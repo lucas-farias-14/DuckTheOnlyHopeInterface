@@ -106,8 +106,9 @@ const RegisterForm = () => {
         variant="outlined"
         value={request.age}
         onChange={(event) => setRequest({ ...request, age: event.target.value })}
+        style={{ width: '100px' }}
       />
-      <FormControl variant="outlined" className={classes.inputs}>
+      <FormControl variant="outlined" className={classes.inputs} style={{ width: '200px' }}>
         <InputLabel id="sexoLabel">Sexo</InputLabel>
         <Select
           labelId="sexoLabel"
@@ -126,6 +127,7 @@ const RegisterForm = () => {
         className={classes.inputs}
         value={request.weight}
         onChange={(event) => setRequest({ ...request, weight: event.target.value })}
+        style={{ width: '150px' }}
       />
       <TextField
         label="Altura"
@@ -133,6 +135,7 @@ const RegisterForm = () => {
         variant="outlined"
         value={request.height}
         onChange={(event) => setRequest({ ...request, height: event.target.value })}
+        style={{ width: '150px' }}
       />
       <FormControl variant="outlined" className={classes.inputs}>
         <InputLabel id="tipoSanguineoLabel">Tipo Sanguíneo</InputLabel>
@@ -211,20 +214,24 @@ const RegisterForm = () => {
         </Select>
       </FormControl>
       <Box mt={2} className={classes.actionBox}>
-        <Button variant="outlined" onClick={onSubmit}>
+        <Button variant="outlined" onClick={onSubmit} style={{ backgroundColor: '#fb8301' }}>
           Cadastrar hospedeiro
         </Button>
       </Box>
       <Dialog onClose={onClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={onClose}>
-          <center>
-            <strong>Hospedeiro cadastrado!</strong>
+        <DialogTitle id="customized-dialog-title" onClose={onClose} style={{ backgroundColor: '#fdfa79' }}>
+          <center style={{ color: 'black' }}>
+            <h3>
+              <strong>Hospedeiro cadastrado!</strong>
+            </h3>
           </center>
         </DialogTitle>
-        <DialogContent dividers>
+        <DialogContent dividers style={{ backgroundColor: '#fefaad' }}>
           <Typography gutterBottom>
-            <center>
-              <p>Se algum dia, caso queira o destino, essa pessoa se tornar um zumbi, esses serão seus atributos:</p>
+            <center style={{ color: 'black' }}>
+              <p style={{ width: '400px' }}>
+                Se algum dia, caso queira o destino, essa pessoa se tornar um zumbi, esses serão seus atributos:
+              </p>
               <strong>Força: {response.strength}</strong>
               <br />
               <strong>Velocidade: {response.speed}</strong>
@@ -233,8 +240,16 @@ const RegisterForm = () => {
             </center>
           </Typography>
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={onClose} variant="outlined">
+        <DialogActions
+          style={{
+            backgroundColor: '#fefaad',
+            display: 'flex',
+            placeItems: 'center',
+            justifyContent: 'center',
+            padding: '15px',
+          }}
+        >
+          <Button autoFocus onClick={onClose} variant="outlined" style={{ backgroundColor: '#fb8301', color: 'black' }}>
             Obrigado! (eu acho...)
           </Button>
         </DialogActions>
