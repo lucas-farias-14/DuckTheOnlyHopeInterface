@@ -10,8 +10,8 @@ import RegisterForm from 'views/Register/RegisterForm'
 import Pato from 'views/Pato/Pato'
 import useStyles from './styles'
 import EnhancedTable from 'views/List/List'
-import HomeIcon from '@material-ui/icons/Home'
 import Home from '../Home/Home'
+import { Icon } from '@iconify/react'
 function TabPanel(props) {
   const { children, value, index, ...other } = props
 
@@ -62,28 +62,25 @@ export default function SimpleTabs() {
           onChange={handleChange}
           style={{ display: 'flex', alignItems: 'center', placeItems: 'center' }}
         >
-          <Tab icon={<HomeIcon />} arial-label="home" {...a11yProps(0)} />
-          <Tab label="Cadastrar Hospedeiro" {...a11yProps(1)} />
-          <Tab label="Listar Hospedeiros" {...a11yProps(2)} />
-          <Tab label="Pato" {...a11yProps(3)} />
+          <Tab label="Cadastrar Hospedeiro" {...a11yProps(0)} />
+          <Tab label="Listar Hospedeiros" {...a11yProps(1)} />
+          <Tab icon={<Icon icon="mdi:duck" width="36" height="36" />} arial-label="Pato" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Home />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
         <Container maxWidth="xs" fullWidth>
           <Box mt={3}>
             <RegisterForm />
           </Box>
         </Container>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={1}>
         <EnhancedTable />
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      <TabPanel value={value} index={2}>
         <Pato />
       </TabPanel>
+      <Home />
     </div>
   )
 }
