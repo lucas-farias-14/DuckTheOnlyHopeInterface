@@ -1,6 +1,12 @@
 import { makeStyles } from '@material-ui/core'
 
 const styles = makeStyles((theme) => ({
+  styledForm: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
   selectControl: {
     borderColor: '#3C4B8F',
   },

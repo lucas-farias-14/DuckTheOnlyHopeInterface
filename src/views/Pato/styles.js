@@ -16,7 +16,7 @@ const styles = makeStyles((theme) => ({
     minHeight: '100%',
     flexDirection: 'column',
     paddingBottom: 80,
-    marginTop: 55,
+    marginTop: 0,
     textAlign: 'center',
   },
   welcomeText: {

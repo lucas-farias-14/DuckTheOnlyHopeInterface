@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { Box, Button, TextField } from '@material-ui/core'
-import { useForm } from 'react-hook-form'
-import schemas from '../schema'
 import Dialog from '@material-ui/core/Dialog'
 import { addHost } from 'requests'
 import FormControl from '@material-ui/core/FormControl'
@@ -101,7 +99,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <form>
+    <form className={classes.styledForm}>
       <TextField
         label="Idade"
         variant="outlined"
@@ -111,6 +109,7 @@ const RegisterForm = () => {
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel id="sexoLabel">Sexo</InputLabel>
         <Select
+          style={{ borderColor: 'white' }}
           labelId="sexoLabel"
           value={request.sex}
           onChange={(event) => setRequest({ ...request, sex: event.target.value })}
@@ -210,7 +209,7 @@ const RegisterForm = () => {
         </Select>
       </FormControl>
       <Box mt={2} className={classes.actionBox}>
-        <Button variant="contained" onClick={onSubmit}>
+        <Button variant="outlined" onClick={onSubmit}>
           Cadastrar hospedeiro
         </Button>
       </Box>
@@ -233,7 +232,7 @@ const RegisterForm = () => {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={onClose} variant="contained">
+          <Button autoFocus onClick={onClose} variant="outlined">
             Obrigado! (eu acho...)
           </Button>
         </DialogActions>

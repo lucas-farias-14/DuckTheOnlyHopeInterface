@@ -35,3 +35,10 @@ export function addHost(data) {
     body: JSON.stringify(data),
   })
 }
+
+export function getAllZombies() {
+  return request({
+    url: API_BASE_URL + '/zombie/getAll',
+    method: 'GET',
+  })
+}
