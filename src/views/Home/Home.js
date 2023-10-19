@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Container } from '@material-ui/core'
 import useStyles from '../Pato/styles'
-import logo from 'images/obiwankeduck.png'
+import logo from 'images/logo.png'
 
 const Home = () => {
   const classes = useStyles()
@@ -13,10 +13,10 @@ const Home = () => {
           <img src={logo} alt="logo-fightforge" style={{ maxWidth: '300px' }} />
         </Box>
         <Box mt={6} style={{ marginTop: '-10px', color: '#fdfa79', placeItems: 'center', display: 'grid' }}>
-          <h2>"Bem Vindo a Duck The Only Hope!"</h2>
+          <h2>Bem-vindo ao Duck, The Only Hope!</h2>
           <div style={{ width: '60%' }}>
-            A humanidade está a beira da extinção, mas com a ajuda deste sistema, e os patos mais poderosos ja vistos na
-            história, talvez tenhamos uma chance!
+            A humanidade está a beira da extinção, mas com a ajuda deste sistema, e dos patos mais poderosos da
+            história, talvez tenhamos uma chance! (ou não...)
           </div>
         </Box>
       </Container>
