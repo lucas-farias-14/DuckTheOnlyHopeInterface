@@ -11,7 +11,7 @@ const Pato = () => {
     <Box className={classes.root}>
       <Container>
         <Box mt={12} style={{ marginTop: '0' }}>
-          <img src={obiwankeduck} alt="logo-fightforge" style={{ maxWidth: '300px' }} />
+          <img src={obiwankeduck} alt="obiwankeduck" style={{ maxWidth: '300px' }} />
         </Box>
         <Box mt={6} style={{ marginTop: '-10px', color: '#fdfa79', placeItems: 'center', display: 'grid' }}>
           <h2>"Help me, Obi-Wan Keduck. You're my only hope."</h2>
