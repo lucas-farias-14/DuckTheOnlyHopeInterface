@@ -100,7 +100,7 @@ export default function SimpleTabs() {
                   </div>
                   <div style={{ marginTop: '-10px', color: '#fdfa79', placeItems: 'center', display: 'grid' }}>
                     <center>
-                      Já <b>Willian Scaquett</b> também cursa Sistemas de Informações no Univem porém, contrariando as
+                      Já <b>Willian Scaquett</b> também cursa Sistemas de Informações no Univem, porém, contrariando as
                       estatísticas, ama se aventurar no mundo Java. Escritor (ou uma tentativa de ser) nas horas vagas.
                     </center>
                   </div>
