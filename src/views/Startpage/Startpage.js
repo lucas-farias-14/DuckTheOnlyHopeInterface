@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
-import { Container } from '@material-ui/core'
+import { Button, Container, Dialog, DialogActions, DialogContent, IconButton } from '@material-ui/core'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
@@ -16,6 +16,8 @@ import CreateIcon from '@material-ui/icons/Create'
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered'
 import Tooltip from '@material-ui/core/Tooltip'
 import Logo from 'images/logo.png'
+import obiwankeduck from 'images/obiwankeduck.png'
+import anakinskyduck from 'images/anakinskyduck.png'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -53,6 +55,7 @@ function a11yProps(index) {
 export default function SimpleTabs() {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
+  const [open, setOpen] = useState(false)
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -61,7 +64,67 @@ export default function SimpleTabs() {
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{ backgroundColor: '#fdfa79', color: 'black', display: 'flex' }}>
-        <img src={Logo} alt="logo-duck" style={{ width: '48px', height: '48px', position: 'absolute' }} />
+        <Tooltip arrow="true" title="Sobre os devs">
+          <IconButton
+            style={{ position: 'absolute', width: '5%', backgroundColor: 'transparent', padding: '0', zIndex: '1' }}
+            onClick={() => setOpen(true)}
+          >
+            <img src={Logo} alt="logo-duck" style={{ width: '48px', height: '48px' }} />
+          </IconButton>
+        </Tooltip>
+        <Dialog
+          open={open}
+          onClose={() => setOpen(false)}
+          aria-labelledby="form-dialog-title"
+          centered
+          style={{ width: '100%' }}
+        >
+          <DialogContent style={{ backgroundColor: '#231F20' }}>
+            <Box className={classes.root}>
+              <Container>
+                <div style={{ display: 'flex' }}>
+                  <div style={{ marginTop: '-10px', color: '#fdfa79', placeItems: 'center', display: 'grid' }}>
+                    <center>
+                      <b>Lucas Eduardo</b> cursa Sistemas de Informação no Univem e seu lance é python-django "full
+                      stack" (vamos dizer que ele faz o que precisar). Também adora se desafiar aprendendo coisas
+                      diferentes, como foi com o React.js!
+                    </center>
+                  </div>
+                  <div>
+                    <img src={obiwankeduck} alt="logo-duck" style={{ maxWidth: '200px' }} />
+                  </div>
+                </div>
+                <div style={{ display: 'flex' }}>
+                  <div style={{ marginTop: '0' }}>
+                    <img src={anakinskyduck} alt="logo-duck" style={{ maxWidth: '200px' }} />
+                  </div>
+                  <div style={{ marginTop: '-10px', color: '#fdfa79', placeItems: 'center', display: 'grid' }}>
+                    <center>
+                      Já <b>Willian Scaquett</b> também cursa Sistemas de Informações no Univem porém, contrariando as
+                      estatísticas, ama se aventurar no mundo Java. Escritor (ou uma tentativa de ser) nas horas vagas.
+                    </center>
+                  </div>
+                </div>
+              </Container>
+            </Box>
+          </DialogContent>
+          <DialogActions
+            style={{
+              backgroundColor: '#231F20',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Button
+              onClick={() => setOpen(false)}
+              style={{ color: 'white', marginBottom: '15px' }}
+              className={classes.ButtonHover}
+            >
+              Então tá bom
+            </Button>
+          </DialogActions>
+        </Dialog>
         <Tabs
           centered
           value={value}

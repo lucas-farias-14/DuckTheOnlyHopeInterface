@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Container } from '@material-ui/core'
 import useStyles from '../Pato/styles'
 import logo from 'images/logo.png'
@@ -8,7 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 
 export default function Home() {
-  const [open, setOpen] = React.useState(true)
+  const [open, setOpen] = useState(true)
   const classes = useStyles()
 
   const handleClose = () => {

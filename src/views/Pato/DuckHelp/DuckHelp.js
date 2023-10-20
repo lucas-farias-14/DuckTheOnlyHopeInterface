@@ -56,7 +56,7 @@ export default function DuckHelp() {
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#272829', color: '#fcf000' }}>
             <center>
-              <strong>Gerador de estratégia</strong>
+              <b>Gerador de estratégia</b>
             </center>
           </DialogTitle>
           <DialogContent style={{ backgroundColor: '#34373B' }}>
@@ -96,7 +96,7 @@ export default function DuckHelp() {
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#272829', color: '#fcf000' }}>
             <center>
-              <strong>Zumbi encontrado e estratégia definida!</strong>
+              <b>Zumbi encontrado e estratégia definida!</b>
             </center>
           </DialogTitle>
           <DialogContent style={{ backgroundColor: '#34373B' }}>
