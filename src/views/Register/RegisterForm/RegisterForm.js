@@ -272,7 +272,7 @@ const RegisterForm = () => {
         <Dialog onClose={onClose} aria-labelledby="customized-dialog-title" open={open}>
           <DialogTitle id="customized-dialog-title" onClose={onClose} style={{ backgroundColor: '#272829' }}>
             <center style={{ color: '#fcf000' }}>
-              <strong>Hospedeiro cadastrado!</strong>
+              <b>Hospedeiro cadastrado!</b>
             </center>
           </DialogTitle>
           <DialogContent dividers style={{ backgroundColor: '#34373B' }}>
@@ -281,11 +281,11 @@ const RegisterForm = () => {
                 <p style={{ width: '400px' }}>
                   Se algum dia, caso queira o destino, essa pessoa se tornar um zumbi, esses serão seus atributos:
                 </p>
-                <strong>Força: {response.strength}</strong>
+                Força: <b>{response.strength}</b>
                 <br />
-                <strong>Velocidade: {response.speed}</strong>
+                Velocidade: <b>{response.speed}</b>
                 <br />
-                <strong>Inteligência: {response.intelligence}</strong>
+                Inteligência: <b>{response.intelligence}</b>
               </center>
             </Typography>
           </DialogContent>
