@@ -56,7 +56,7 @@ export default function DuckHelp() {
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#272829', color: '#fcf000' }}>
             <center>
-              <strong>Identificador de Zumbis</strong>
+              <strong>Gerador de estratégia</strong>
             </center>
           </DialogTitle>
           <DialogContent style={{ backgroundColor: '#34373B' }}>
@@ -94,12 +94,14 @@ export default function DuckHelp() {
       )}
       {strategy && (
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#330d00', color: '#fcf000' }}>
-            Zumbi encontrado e estratégia definida!
+          <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#272829', color: '#fcf000' }}>
+            <center>
+              <strong>Zumbi encontrado e estratégia definida!</strong>
+            </center>
           </DialogTitle>
-          <DialogContent style={{ backgroundColor: '#fefaad' }}>
+          <DialogContent style={{ backgroundColor: '#34373B' }}>
             <DialogContentText>
-              <div style={{ color: 'black', textAlign: 'center' }}>
+              <div style={{ textAlign: 'center', color: 'yellow' }}>
                 Encontramos o zumbi e traçamos abaixo a estratégia que nosso heroi penoso deve seguir:
                 <div style={{ margin: '20px 0', display: 'flex' }}>
                   <div style={{ flex: '1', marginRight: '5px', textAlign: 'right' }}>
@@ -126,8 +128,8 @@ export default function DuckHelp() {
               </div>
             </DialogContentText>
           </DialogContent>
-          <DialogActions style={{ backgroundColor: '#fefaad' }}>
-            <Button onClick={handleClose} style={{ color: 'black' }}>
+          <DialogActions style={{ backgroundColor: '#34373B' }}>
+            <Button onClick={handleClose} style={{ color: '#3bdff8' }}>
               Pode deixar!
             </Button>
           </DialogActions>

@@ -44,18 +44,18 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'id', numeric: true, disablePadding: true, label: 'ID' },
-  { id: 'idade', numeric: true, disablePadding: true, label: 'Idade' },
-  { id: 'sexo', numeric: false, disablePadding: false, label: 'Sexo' },
-  { id: 'peso', numeric: true, disablePadding: false, label: 'Peso' },
-  { id: 'altura', numeric: true, disablePadding: false, label: 'Altura' },
-  { id: 'tipoSanguineo', numeric: false, disablePadding: false, label: 'Tipo Sanguíneo' },
-  { id: 'generoMusical', numeric: false, disablePadding: false, label: 'Gênero Musical' },
-  { id: 'esporte', numeric: false, disablePadding: false, label: 'Esporte' },
+  { id: 'id', numeric: true, disablePadding: false, label: 'ID' },
+  { id: 'age', numeric: true, disablePadding: false, label: 'Idade' },
+  { id: 'sex', numeric: false, disablePadding: false, label: 'Sexo' },
+  { id: 'weight', numeric: true, disablePadding: false, label: 'Peso' },
+  { id: 'height', numeric: true, disablePadding: false, label: 'Altura' },
+  { id: 'bloodType', numeric: false, disablePadding: false, label: 'Tipo Sanguíneo' },
+  { id: 'musicalGenre', numeric: false, disablePadding: false, label: 'Gênero Musical' },
+  { id: 'sport', numeric: false, disablePadding: false, label: 'Esporte' },
   { id: 'game', numeric: false, disablePadding: false, label: 'Game' },
-  { id: 'forca', numeric: true, disablePadding: false, label: 'Força' },
-  { id: 'velocidade', numeric: true, disablePadding: false, label: 'Velocidade' },
-  { id: 'inteligencia', numeric: true, disablePadding: false, label: 'Inteligência' },
+  { id: 'strength', numeric: true, disablePadding: false, label: 'Força' },
+  { id: 'speed', numeric: true, disablePadding: false, label: 'Velocidade' },
+  { id: 'intelligence', numeric: true, disablePadding: false, label: 'Inteligência' },
 ]
 
 function EnhancedTableHead(props) {
@@ -225,14 +225,13 @@ export default function EnhancedTable() {
 
   useEffect(() => {
     getAllZombies().then((resp) => {
-      console.log(resp)
       setRows(resp)
     })
   }, [])
 
   const classes = useStyles()
   const [order, setOrder] = useState('asc')
-  const [orderBy, setOrderBy] = useState('calories')
+  const [orderBy, setOrderBy] = useState('id')
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
