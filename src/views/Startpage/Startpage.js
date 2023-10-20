@@ -16,6 +16,7 @@ import CreateIcon from '@material-ui/icons/Create'
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered'
 import Tooltip from '@material-ui/core/Tooltip'
 import Logo from 'images/logo.png'
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props
 
@@ -60,7 +61,7 @@ export default function SimpleTabs() {
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{ backgroundColor: '#fdfa79', color: 'black', display: 'flex' }}>
-        <img src={Logo} alt="logo-fightforge" style={{ width: '48px', height: '48px', position: 'absolute' }} />
+        <img src={Logo} alt="logo-duck" style={{ width: '48px', height: '48px', position: 'absolute' }} />
         <Tabs
           centered
           value={value}

@@ -22,7 +22,7 @@ export default function Home() {
           <Box className={classes.root}>
             <Container>
               <Box mt={12} style={{ marginTop: '0' }}>
-                <img src={logo} alt="logo-fightforge" style={{ maxWidth: '300px' }} />
+                <img src={logo} alt="logo-duck" style={{ maxWidth: '300px' }} />
               </Box>
               <Box mt={6} style={{ marginTop: '-10px', color: '#fdfa79', placeItems: 'center', display: 'grid' }}>
                 <h2>Bem-vindo ao Duck, The Only Hope!</h2>
@@ -42,7 +42,11 @@ export default function Home() {
             justifyContent: 'center',
           }}
         >
-          <Button onClick={handleClose} style={{ color: 'white' }} className={classes.ButtonHover}>
+          <Button
+            onClick={handleClose}
+            style={{ color: 'white', marginBottom: '15px' }}
+            className={classes.ButtonHover}
+          >
             Vamos lá!
           </Button>
         </DialogActions>
