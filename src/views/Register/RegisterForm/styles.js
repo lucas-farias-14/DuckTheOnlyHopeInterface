@@ -25,19 +25,11 @@ const styles = makeStyles((theme) => ({
     backgroundColor: 'white',
   },
   ButtonHover: {
-    backgroundColor: '#fb8301',
+    color: 'white',
+    backgroundColor: '#006e8c',
     '&:hover': {
-      backgroundColor: '#faa748',
+      backgroundColor: '#004f73',
     },
-  },
-  buttonPrimary: {
-    widht: '100%',
-    backgroundColor: '#808080',
-    color: 'white ',
-    '&:hover': {
-      backgroundColor: 'red',
-    },
-    fontWeight: 'bold',
   },
   actionBox: {
     display: 'flex',
@@ -50,6 +42,7 @@ const styles = makeStyles((theme) => ({
     margin: '25px 0px',
   },
   inputs: {
+    width: '100%',
     '& .MuiInputBase-root': {
       color: '#808080', // Cor do texto
     },
