@@ -1,5 +1,5 @@
 import { Routes as Switch, Route, BrowserRouter } from 'react-router-dom'
-import { Login, Register, StartPage, Teacher } from 'views'
+import { StartPage } from 'views'
 
 const Routes = () => {
   return (

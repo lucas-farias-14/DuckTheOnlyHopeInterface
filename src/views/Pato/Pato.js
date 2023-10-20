@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Box, Container, Typography } from '@material-ui/core'
+import React from 'react'
+import { Box, Container } from '@material-ui/core'
 import useStyles from './styles'
 import obiwankeduck from 'images/obiwankeduck.png'
 import DuckHelp from 'views/Pato/DuckHelp/DuckHelp'
