@@ -107,7 +107,7 @@ const useToolbarStyles = makeStyles((theme) => ({
   root: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(1),
-    backgroundColor: '#f9fdc3',
+    backgroundColor: '#34373B',
   },
   highlight:
     theme.palette.type === 'dark'
@@ -121,7 +121,7 @@ const useToolbarStyles = makeStyles((theme) => ({
         },
   title: {
     flex: '1 1 100%',
-    color: 'black',
+    color: 'yellow',
   },
   search: {
     position: 'relative',
@@ -202,7 +202,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: '100%',
     marginBottom: theme.spacing(2),
-    backgroundColor: '#292637',
+    backgroundColor: '#272829',
   },
   table: {
     minWidth: 750,

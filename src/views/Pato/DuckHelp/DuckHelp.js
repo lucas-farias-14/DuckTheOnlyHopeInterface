@@ -10,7 +10,6 @@ import WarningIcon from '@material-ui/icons/Warning'
 import useStyles from '../styles'
 import { getCombatStrategy } from 'requests'
 import { Tooltip } from '@material-ui/core'
-import styled from '@emotion/styled'
 
 export default function DuckHelp() {
   const [open, setOpen] = useState(false)
@@ -49,46 +48,45 @@ export default function DuckHelp() {
         startIcon={<WarningIcon />}
         endIcon={<WarningIcon />}
         onClick={handleClickOpen}
+        style={{ color: 'white' }}
       >
         Ajuda o Pato!!
       </Button>
       {!strategy && (
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#330d00', color: '#fcf000' }}>
+          <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#272829', color: '#fcf000' }}>
             <center>
               <strong>Identificador de Zumbis</strong>
             </center>
           </DialogTitle>
-          <DialogContent style={{ backgroundColor: '#fefaad' }}>
+          <DialogContent style={{ backgroundColor: '#34373B' }}>
             <DialogContentText>
-              <div style={{ fontWeight: 'bold', textAlign: 'center' }}>
+              <div style={{ textAlign: 'center', color: 'yellow' }}>
                 Antes de bolarmos a estratégia ideal para enfrentar um zumbi, precisamos identificá-lo! E, graças aos
                 deuses da identificação, temos um ID para todos os (que foram cadastrados) zumbis. Insira abaixo o ID
                 passado pelo pato para que a super API prepare uma estratégia!
               </div>
             </DialogContentText>
             <TextField
-              autoFocus
-              margin="dense"
-              id="id"
-              label="ID do ZUMBI"
-              type="text"
-              fullWidth
+              className={classes.inputs}
+              label="ID do zumbi"
+              variant="outlined"
+              style={{ width: '100%' }}
               onChange={(event) => setZombieId(event.target.value)}
             />
             <DialogContentText>
-              <div style={{ fontWeight: 'bold', textAlign: 'center' }}>
+              <div style={{ textAlign: 'center', color: 'yellow' }}>
                 (na aba ao lado você encontra alguns IDs para <s>brincar</s> testar)
               </div>
             </DialogContentText>
           </DialogContent>
-          <DialogActions style={{ backgroundColor: '#fefaad' }}>
+          <DialogActions style={{ backgroundColor: '#34373B' }}>
             <Tooltip title="Não vai mesmo ajudar o pato?" arrow="true">
-              <Button onClick={handleClose} style={{ color: 'black' }}>
+              <Button onClick={handleClose} style={{ color: '#3bdff8' }}>
                 Fechar
               </Button>
             </Tooltip>
-            <Button onClick={() => findCombatStrategy()} style={{ color: 'black' }}>
+            <Button onClick={() => findCombatStrategy()} style={{ color: '#3bdff8' }}>
               Enviar
             </Button>
           </DialogActions>

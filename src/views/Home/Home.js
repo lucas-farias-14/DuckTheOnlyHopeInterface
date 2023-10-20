@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogTitle from '@material-ui/core/DialogTitle'
 
 export default function Home() {
   const [open, setOpen] = React.useState(true)
@@ -18,7 +17,7 @@ export default function Home() {
 
   return (
     <div>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" style={{ width: '110%' }}>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" centered style={{ width: '100%' }}>
         <DialogContent style={{ backgroundColor: '#231F20' }}>
           <Box className={classes.root}>
             <Container>
@@ -36,9 +35,14 @@ export default function Home() {
           </Box>
         </DialogContent>
         <DialogActions
-          style={{ backgroundColor: '#231F20', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          style={{
+            backgroundColor: '#231F20',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         >
-          <Button onClick={handleClose} style={{ color: 'yellow' }} className={classes.ButtonHover}>
+          <Button onClick={handleClose} style={{ color: 'white' }} className={classes.ButtonHover}>
             Vamos lá!
           </Button>
         </DialogActions>

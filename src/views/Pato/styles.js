@@ -26,9 +26,35 @@ const styles = makeStyles((theme) => ({
   },
   logo: {},
   ButtonHover: {
-    backgroundColor: '#fb8301',
+    backgroundColor: '#006e8c',
     '&:hover': {
-      backgroundColor: '#faa748',
+      backgroundColor: '#004f73',
+    },
+  },
+  inputs: {
+    width: '100%',
+    '& .MuiInputBase-root': {
+      color: '#808080', // Cor do texto
+    },
+    '& .MuiInputBase-root.Mui-focused': {
+      color: 'white', // Cor do texto quando está focado
+    },
+    '& .MuiInputLabel-root': {
+      color: '#808080', // Cor da label
+    },
+    '& .MuiInputLabel-root.Mui-focused': {
+      color: 'white', // Cor da label quando está focado
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#808080', // Cor da borda do input
+      },
+      '&:hover fieldset': {
+        borderColor: 'white', // Cor da borda do input ao passar o mouse
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'white', // Cor da borda quando o campo está focado
+      },
     },
   },
 }))
