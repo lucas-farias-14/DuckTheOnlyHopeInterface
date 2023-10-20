@@ -10,20 +10,24 @@ import WarningIcon from '@material-ui/icons/Warning'
 import useStyles from '../styles'
 import { getCombatStrategy } from 'requests'
 import { Tooltip } from '@material-ui/core'
+import styled from '@emotion/styled'
 
 export default function DuckHelp() {
   const [open, setOpen] = useState(false)
-  const [zombieId, setZombieId] = useState('')
+  const [zombieId, setZombieId] = useState()
   const [strategy, setStrategy] = useState()
   const classes = useStyles()
 
   const handleClickOpen = () => {
     setOpen(true)
+    setStrategy()
+    setZombieId()
   }
 
   const handleClose = () => {
     setOpen(false)
     setStrategy()
+    setZombieId()
   }
 
   const findCombatStrategy = () => {
@@ -51,15 +55,16 @@ export default function DuckHelp() {
       {!strategy && (
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#330d00', color: '#fcf000' }}>
-            Identificador de Zumbis
+            <center>
+              <strong>Identificador de Zumbis</strong>
+            </center>
           </DialogTitle>
           <DialogContent style={{ backgroundColor: '#fefaad' }}>
             <DialogContentText>
-              <div style={{ fontWeight: 'bold' }}>
-                Antes de bolarmos a estratégia ideal para enfrentar um zumbi, precisamos identificá-lo! E graças aos
-                deuses da identificação, temos um ID para "todos" (todos cadastrados) os zumbis. Insira abaixo o ID
-                passado pelo pato para que a super API prepare uma estratégia! (na aba ao lado você pode pegar alguns
-                IDs para <s>brincar</s> testar)
+              <div style={{ fontWeight: 'bold', textAlign: 'center' }}>
+                Antes de bolarmos a estratégia ideal para enfrentar um zumbi, precisamos identificá-lo! E, graças aos
+                deuses da identificação, temos um ID para todos os (que foram cadastrados) zumbis. Insira abaixo o ID
+                passado pelo pato para que a super API prepare uma estratégia!
               </div>
             </DialogContentText>
             <TextField
@@ -71,6 +76,11 @@ export default function DuckHelp() {
               fullWidth
               onChange={(event) => setZombieId(event.target.value)}
             />
+            <DialogContentText>
+              <div style={{ fontWeight: 'bold', textAlign: 'center' }}>
+                (na aba ao lado você encontra alguns IDs para <s>brincar</s> testar)
+              </div>
+            </DialogContentText>
           </DialogContent>
           <DialogActions style={{ backgroundColor: '#fefaad' }}>
             <Tooltip title="Não vai mesmo ajudar o pato?" arrow="true">
