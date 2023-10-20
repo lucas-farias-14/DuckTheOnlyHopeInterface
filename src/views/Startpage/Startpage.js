@@ -12,6 +12,10 @@ import useStyles from './styles'
 import EnhancedTable from 'views/List/List'
 import Home from '../Home/Home'
 import { Icon } from '@iconify/react'
+import CreateIcon from '@material-ui/icons/Create'
+import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered'
+import Tooltip from '@material-ui/core/Tooltip'
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props
 
@@ -62,9 +66,15 @@ export default function SimpleTabs() {
           onChange={handleChange}
           style={{ display: 'flex', alignItems: 'center', placeItems: 'center' }}
         >
-          <Tab label="Cadastrar Hospedeiro" {...a11yProps(0)} />
-          <Tab label="Listar Hospedeiros" {...a11yProps(1)} />
-          <Tab icon={<Icon icon="mdi:duck" width="36" height="36" />} arial-label="Pato" {...a11yProps(2)} />
+          <Tooltip arrow="true" title="Cadastrar hospedeiro">
+            <Tab icon={<CreateIcon style={{ fontSize: 35 }} />} {...a11yProps(0)} />
+          </Tooltip>
+          <Tooltip arrow="true" title="Lista de hospedeiros">
+            <Tab icon={<FormatListNumberedIcon style={{ fontSize: 35 }} />} {...a11yProps(1)} />
+          </Tooltip>
+          <Tooltip arrow="true" title="PATO!!">
+            <Tab icon={<Icon icon="mdi:duck" width="36" height="36" />} arial-label="Pato" {...a11yProps(2)} />
+          </Tooltip>
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

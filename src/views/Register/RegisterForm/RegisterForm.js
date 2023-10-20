@@ -43,6 +43,35 @@ const RegisterForm = () => {
     },
   })
 
+  const onlyIntHandle = (field, value) => {
+    if (!isNaN(value)) {
+      setRequest({ ...request, [field]: parseInt(value) })
+    }
+    if (!value) {
+      setRequest({ ...request, [field]: value })
+    }
+  }
+
+  const onlyFloatHandle = (field, value) => {
+    if (!isNaN(value) && Number(value).countDecimals() <= 2) {
+      setRequest({ ...request, [field]: value })
+    }
+    if (!value) {
+      setRequest({ ...request, [field]: value })
+    }
+  }
+
+  const removeDot = (field, value) => {
+    if (value && value.slice(-1) == '.') {
+      setRequest({ ...request, [field]: value.slice(0, -1) })
+    }
+  }
+
+  Number.prototype.countDecimals = function () {
+    if (Math.floor(this.valueOf()) === this.valueOf()) return 0
+    return this.toString().split('.')[1].length || 0
+  }
+
   const DialogContent = withStyles((theme) => ({
     root: {
       padding: theme.spacing(2),
@@ -105,7 +134,7 @@ const RegisterForm = () => {
         label="Idade"
         variant="outlined"
         value={request.age}
-        onChange={(event) => setRequest({ ...request, age: event.target.value })}
+        onChange={(event) => onlyIntHandle('age', event.target.value)}
         style={{ width: '100px' }}
       />
       <FormControl variant="outlined" className={classes.inputs} style={{ width: '200px' }}>
@@ -124,17 +153,19 @@ const RegisterForm = () => {
       <TextField
         label="Peso"
         variant="outlined"
+        onBlur={(event) => removeDot('weight', event.target.value)}
         className={classes.inputs}
         value={request.weight}
-        onChange={(event) => setRequest({ ...request, weight: event.target.value })}
+        onChange={(event) => onlyFloatHandle('weight', event.target.value)}
         style={{ width: '150px' }}
       />
       <TextField
         label="Altura"
         className={classes.inputs}
         variant="outlined"
+        onBlur={(event) => removeDot('height', event.target.value)}
         value={request.height}
-        onChange={(event) => setRequest({ ...request, height: event.target.value })}
+        onChange={(event) => onlyFloatHandle('height', event.target.value)}
         style={{ width: '150px' }}
       />
       <FormControl variant="outlined" className={classes.inputs}>
@@ -221,9 +252,7 @@ const RegisterForm = () => {
       <Dialog onClose={onClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={onClose} style={{ backgroundColor: '#330d00' }}>
           <center style={{ color: '#fcf000' }}>
-            <h3>
-              <strong>Hospedeiro cadastrado!</strong>
-            </h3>
+            <strong>Hospedeiro cadastrado!</strong>
           </center>
         </DialogTitle>
         <DialogContent dividers style={{ backgroundColor: '#fefaad' }}>

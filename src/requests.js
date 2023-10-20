@@ -42,3 +42,10 @@ export function getAllZombies() {
     method: 'GET',
   })
 }
+
+export function getCombatStrategy(zombieId) {
+  return request({
+    url: API_BASE_URL + `/zombie/getCombatStrategy/${zombieId}`,
+    method: 'GET',
+  })
+}
